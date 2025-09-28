@@ -7,7 +7,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import { Gif, TrendingResponse } from './types';
 
 const baseURL = "https://api.klipy.com";
-const apiKey = "i8t64SqhFtuK5u3wkz1uzS4BpduuPAHQMlVukKrnuUs6cma3VD8WA5k6Mr0qA3IN";
+const apiKey = "request from interviewer"
 
 export default function App() {
   const [gifs, setGifs] = useState<Gif[]>([]);
@@ -24,33 +24,7 @@ export default function App() {
   }, [currentPage]);
 
   const fetchTrendingGifs = async (page: number = 1) => {
-    setLoading(true);
-    setError(null);
-
-    try {
-      const url = `${baseURL}/api/v1/${apiKey}/gifs/trending?page=${page}&per_page=${perPage}&customer_id=default&locale=en&content_filter=off`;
-      
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data: TrendingResponse = await response.json();
-      setGifs(data.data.data || []);
-      setHasNextPage(data.data.has_next);
-      setCurrentPage(data.data.current_page);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred while fetching trending GIFs');
-      setGifs([]);
-    } finally {
-      setLoading(false);
-    }
+    // Fetch trending GIFs
   };
 
   const handlePageChange = (page: number) => {
