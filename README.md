@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GIF Coding Challenge Overview
+You are a developer tasked with creating a web application that adds features to our gif displaying frontend.
 
-## Getting Started
+# Expectations
+- You can search whatever documentation you need
+- You can use whatever AI tools you'd like except for embedded IDE agents -
+The idea here is that this could be done by AI, but in this scenario we are building core functionality that needs to be understood in a very intentional way.
+- Although we want to guage coding productivity, you will be assessed less on completion and how far you get and more on the quality of your code and the thought process behind it
 
-First, run the development server:
+# The Klipy API
+API Docs:
+https://docs.klipy.com/gif-api
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Create API Key (For interviwer):
+https://partner.klipy.com/api-keys
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# The Challenge:
+Currently, the application displays paginated trending gifs.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You have been tasked with adding some functionality to the application:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Fetch trending gifs on component mount and when page changes
+- State has been set up - consult the Klip_Docs.md for information on how to use the trending gifs endpoint
+- Figure out what structure gif data is in and pass it into the GifGrid component
 
-## Learn More
+2. Add a search bar that allows gifs to be searched for while retaining ability to see trending gifs
+- Users should be able to switch between trending and search mode
+- In search mode, the search bar should be visible and the trending gifs should be hidden
+- Searching and submitting search query should hit the kplipy search endpoint and display results
 
-To learn more about Next.js, take a look at the following resources:
+3. Remove pagination and replace with infinite scroll
+- Remove explicit pagination controls
+- Instead, implement infinite scroll: before user reaches bottom of the page, load more gifs
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Users should be able to favorite gifs and see their favorited gifs in a separate section
+- Add a favorite button to each gif
+- Persist favorites to local storage or persistence of choice
+- Allow users to view their favorited gifs in a separate section
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. Sort favorites by most recent
+- Allow favorite section to be sorted by most recent, ascending or descending
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+6. Implement autocomplete with search suggestions API
+- Klipy has an autocomplete API - use it to render dropdowns in response to typed input in search query
+- Give user a way to select an autocomplete suggestion and use that for search query
