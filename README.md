@@ -26,27 +26,32 @@ Currently, the application displays paginated trending gifs.
 
 You have been tasked with adding some functionality to the application:
 
-1. Fetch trending gifs on component mount and when page changes
-- State has been set up - consult the Klip_Docs.md for information on how to use the trending gifs endpoint
-- Figure out what structure gif data is in and pass it into the GifGrid component
 
-2. Add a search bar that allows gifs to be searched for while retaining ability to see trending gifs
-- Users should be able to switch between trending and search mode
-- In search mode, the search bar should be visible and the trending gifs should be hidden
+###  1) Fetch trending gifs
+- Fetch trending gifs on component mount and pagination change
+- See above info on Klipy API Docs about this endpoint
+- Pass the gif data into the GifGrid component
+
+
+### 2) Add search bar
+- Retain trending gif page
+- Allow user to switch between trending and search mode
+- In search mode, the search bar is visible and trending gifs are hidden
 - Searching and submitting search query should hit the kplipy search endpoint and display results
 
-3. Remove pagination and replace with infinite scroll
+
+### 3) Remove pagination and replace with infinite scroll
 - Remove explicit pagination controls
 - Instead, implement infinite scroll: before user reaches bottom of the page, load more gifs
 
-4. Users should be able to favorite gifs and see their favorited gifs in a separate section
+
+### 4) Add favorite button
+- Add a favorite button to each gif
+- Persist favorites to local storage or persistence of choice
+- Allow users to view their favorited gifs in a separate section (trending, search, favorites)
+
+
+### 5) Sort favorites by most recent
 - Add a favorite button to each gif
 - Persist favorites to local storage or persistence of choice
 - Allow users to view their favorited gifs in a separate section
-
-5. Sort favorites by most recent
-- Allow favorite section to be sorted by most recent, ascending or descending
-
-6. Implement autocomplete with search suggestions API
-- Klipy has an autocomplete API - use it to render dropdowns in response to typed input in search query
-- Give user a way to select an autocomplete suggestion and use that for search query
