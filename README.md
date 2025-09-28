@@ -1,6 +1,9 @@
 # GIF Coding Challenge Overview
 You are a developer tasked with creating a web application that adds features to our gif displaying frontend.
 
+# Get started
+`npm i` and `npm run dev` to get started.
+
 # Expectations
 - You can search whatever documentation you need
 - You can use whatever AI tools you'd like except for embedded IDE agents -
