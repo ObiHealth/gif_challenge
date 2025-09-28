@@ -2,7 +2,11 @@
 You are a developer tasked with creating a web application that adds features to our gif displaying frontend.
 
 # Get started
-`npm i` and `npm run dev` to get started.
+Run the following standard commands:
+```bash
+npm i
+npm run dev
+```
 
 # Expectations
 - You can search whatever documentation you need
