@@ -1,13 +1,20 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import GifGrid from './components/GifGrid';
-import Pagination from './components/Pagination';
-import LoadingSpinner from './components/LoadingSpinner';
-import { Gif, TrendingResponse } from './types';
+import { useState, useEffect } from "react";
+import GifGrid from "./components/GifGrid";
+import Pagination from "./components/Pagination";
+import LoadingSpinner from "./components/LoadingSpinner";
+import { Gif, TrendingResponse } from "./types";
+import "dotenv/config";
 
 const baseURL = "https://api.klipy.com";
-const apiKey = "request from interviewer"
+const apiKey = process.env.NEXT_PUBLIC_KLIPY_API_KEY;
+
+if (!apiKey) {
+  throw new Error(
+    "API key is missing. Please set NEXT_PUBLIC_KLIPY_API_KEY in your environment variables."
+  );
+}
 
 export default function App() {
   const [gifs, setGifs] = useState<Gif[]>([]);
@@ -16,7 +23,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(false);
 
-  const perPage = 20;
+  const gifsPerPage = 20;
 
   // Fetch trending GIFs on component mount and when page changes
   useEffect(() => {
@@ -24,7 +31,7 @@ export default function App() {
   }, [currentPage]);
 
   const fetchTrendingGifs = async (page: number = 1) => {
-    // Fetch trending GIFs
+    // Get some gifs
   };
 
   const handlePageChange = (page: number) => {
@@ -34,11 +41,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
-    
         {/* Trending GIFs */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Trending GIFs</h1>
-          <p className="text-gray-600">Discover the most popular GIFs right now</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            Trending GIFs
+          </h1>
+          <p className="text-gray-600">
+            Discover the most popular GIFs right now
+          </p>
         </div>
 
         {loading && <LoadingSpinner />}
@@ -48,11 +58,12 @@ export default function App() {
             <p className="text-red-800">Error: {error}</p>
           </div>
         )}
-        
 
         {!loading && gifs.length === 0 && !error && (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">No trending GIFs available at the moment</p>
+            <p className="text-gray-500 text-lg">
+              No trending GIFs available at the moment
+            </p>
           </div>
         )}
 
